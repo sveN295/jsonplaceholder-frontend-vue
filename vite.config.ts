@@ -7,7 +7,7 @@ import { BootstrapVueNextResolver } from 'bootstrap-vue-next'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/json-placeholder-frontend/',
+  base: '/jsonplaceholder-frontend-vue/',
   plugins: [
     vue(),
     Components({

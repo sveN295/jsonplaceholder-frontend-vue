@@ -4,24 +4,29 @@
     <!-- Posts -->
     <HeadingComponent size="h2" styling="px-4 mb-8 text-onSurface">Posts</HeadingComponent>
     <div class="grid auto-rows-fr grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
-      <Posts :posts="posts" :elements="6"></Posts>
+      <PostsComponent :posts="posts" :elements="6"></PostsComponent>
     </div>
-    <ButtonField text="All Posts" icon="arrow_forward_ios" route="posts"></ButtonField>
+    <ButtonFieldComponent
+      text="All Posts"
+      icon="arrow_forward_ios"
+      route="posts"
+    ></ButtonFieldComponent>
     <!-- Albums -->
     <HeadingComponent size="h2" styling="px-4 text-onSurface mb-8">Albums</HeadingComponent>
     <div class="grid auto-rows-fr grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
-      <Albums :albums="albums" :elements="6"></Albums>
+      <AlbumsComponent :albums="albums" :elements="6"></AlbumsComponent>
     </div>
-    <ButtonField text="All Albums" icon="arrow_forward_ios" route="albums"></ButtonField>
+    <ButtonFieldComponent
+      text="All Albums"
+      icon="arrow_forward_ios"
+      route="albums"
+    ></ButtonFieldComponent>
   </div>
 </template>
 
 <script setup lang="ts">
 import { getPosts } from '../services/PostService'
-import ButtonField from '../components/ButtonFieldComponent.vue'
 import { getAlbums } from '../services/AlbumService'
-import Posts from '../components/PostsComponent.vue'
-import Albums from '../components/AlbumsComponent.vue'
 
 const posts = await getPosts()
 const albums = await getAlbums()

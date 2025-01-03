@@ -99,7 +99,6 @@
 <script setup lang="ts">
 import { getPost, getComments } from '../services/PostService'
 import { getUsers } from '../services/UserService'
-import HeadingComponent from '../components/HeadingComponent.vue'
 import router from '@/router'
 
 const props = defineProps({

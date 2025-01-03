@@ -7,20 +7,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AlbumComponent: typeof import('./src/components/AlbumComponent.vue')['default']
     AlbumsComponent: typeof import('./src/components/AlbumsComponent.vue')['default']
-    BButton: typeof import('bootstrap-vue-next')['BButton']
-    BCard: typeof import('bootstrap-vue-next')['BCard']
-    BCardText: typeof import('bootstrap-vue-next')['BCardText']
     ButtonComponent: typeof import('./src/components/ButtonComponent.vue')['default']
     ButtonFieldComponent: typeof import('./src/components/ButtonFieldComponent.vue')['default']
     CardComponent: typeof import('./src/components/CardComponent.vue')['default']
-    copy: typeof import('./src/components/PostsComponent copy.vue')['default']
     GlobalHeader: typeof import('./src/components/GlobalHeader.vue')['default']
-    HamburgerMenu: typeof import('./src/components/HamburgerMenu.vue')['default']
     HamburgerMenuComponent: typeof import('./src/components/HamburgerMenuComponent.vue')['default']
-    Header: typeof import('./src/components/Header.vue')['default']
-    Heading: typeof import('./src/components/Heading.vue')['default']
     HeadingComponent: typeof import('./src/components/HeadingComponent.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
@@ -32,10 +24,6 @@ declare module 'vue' {
     RoundButtonComponent: typeof import('./src/components/RoundButtonComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TabComponent: typeof import('./src/components/TabComponent.vue')['default']
-    TabsComponent: typeof import('./src/components/TabsComponent.vue')['default']
-    TestHeading: typeof import('./src/components/TestHeading.vue')['default']
-    TheHeader: typeof import('./src/components/TheHeader.vue')['default']
     UserTabsComponent: typeof import('./src/components/UserTabsComponent.vue')['default']
   }
 }

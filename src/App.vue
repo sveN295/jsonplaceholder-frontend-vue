@@ -14,7 +14,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RouterView } from 'vue-router'
-import GlobalHeader from './components/GlobalHeader.vue'
 
 const darkMode = ref(false)
 

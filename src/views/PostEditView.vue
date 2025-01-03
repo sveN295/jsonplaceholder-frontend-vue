@@ -37,17 +37,17 @@
           {{ message }}
         </div>
         <div class="flex flex-row gap-2">
-          <SimpleButton
+          <ButtonComponent
             text="Cancel"
             styling="bg-surfaceContainerHighest text-onSurfaceContainer"
             @click="router.back()"
-          ></SimpleButton>
-          <SimpleButton
+          ></ButtonComponent>
+          <ButtonComponent
             text="Save"
             styling="bg-primary text-onPrimary"
             :loading="loading"
             @click="submitForm"
-          ></SimpleButton>
+          ></ButtonComponent>
         </div>
       </div>
     </div>
@@ -56,7 +56,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { getPost, updatePost } from '../services/PostService'
-import SimpleButton from '../components/ButtonComponent.vue'
 import router from '@/router'
 import { getUserNames } from '../services/UserService'
 

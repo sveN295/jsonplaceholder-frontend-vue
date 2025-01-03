@@ -3,15 +3,15 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 mt-12 lg:gap-12">
       <!-- Tabs -->
       <div class="col-span-2 order-2 lg:order-1">
-        <Tabs>
+        <UserTabsComponent>
           <template v-slot:posts>
             <div class="grid auto-rows-fr grid-cols-1 lg:grid-cols-2 gap-4 mb-4 mt-8 lg:mt-0">
-              <Posts :posts="posts" :elements="6" hideUser></Posts>
+              <PostsComponent :posts="posts" :elements="6" hideUser></PostsComponent>
             </div>
           </template>
           <template v-slot:albums>
             <div class="grid auto-rows-fr grid-cols-1 lg:grid-cols-2 gap-4 mb-4 mt-8 lg:mt-0">
-              <Albums :albums="albums" :elements="6" hideUser></Albums>
+              <AlbumsComponent :albums="albums" :elements="6" hideUser></AlbumsComponent>
             </div>
           </template>
           <template v-slot:todos>
@@ -40,7 +40,7 @@
               </ul>
             </div>
           </template>
-        </Tabs>
+        </UserTabsComponent>
       </div>
       <!-- User Information -->
       <div class="col-span-1 order-1 lg:order-2 text-onSurface">
@@ -100,10 +100,6 @@ import { ref } from 'vue'
 import { getUser, getUserTodos } from '../services/UserService'
 import { getUserPosts } from '../services/PostService'
 import { getUserAlbums } from '../services/AlbumService'
-import HeadingComponent from '../components/HeadingComponent.vue'
-import Posts from '../components/PostsComponent.vue'
-import Albums from '../components/AlbumsComponent.vue'
-import Tabs from '../components/UserTabsComponent.vue'
 
 const todos = ref<any[]>([])
 

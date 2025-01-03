@@ -1,11 +1,11 @@
 <template>
   <div class="max-w-7xl mx-auto my-8">
     <div class="">
-      <Modal
+      <ModalComponent
         :show="showModal"
         @modal-cancelled="modalCancelled"
         @modal-confirmed="modalConfirmed"
-      ></Modal>
+      ></ModalComponent>
     </div>
     <HeadingComponent size="h1" styling="px-4 mb-12 text-onSurface"
       >Administration</HeadingComponent
@@ -23,12 +23,12 @@
                 <span>{{ user.name }}</span>
               </div>
               <div class="flex flex-row gap-4 items-center">
-                <SimpleButton
+                <ButtonComponent
                   text="Delete"
                   icon="delete"
                   styling="bg-error text-onError"
                   @click="toggleModal('users', index)"
-                ></SimpleButton>
+                ></ButtonComponent>
               </div>
             </div>
           </li>
@@ -45,19 +45,19 @@
                 </div>
                 <div class="flex flex-row gap-2 items-center">
                   <router-link :to="{ name: 'edit.post', params: { id: post.id } }">
-                    <SimpleButton
+                    <ButtonComponent
                       text="Edit"
                       icon="edit"
                       styling="bg-primary text-onPrimary"
                       @click="toggleModal('posts', index)"
-                    ></SimpleButton>
+                    ></ButtonComponent>
                   </router-link>
-                  <SimpleButton
+                  <ButtonComponent
                     text="Delete"
                     icon="delete"
                     styling="bg-error text-onError"
                     @click="toggleModal('posts', index)"
-                  ></SimpleButton>
+                  ></ButtonComponent>
                 </div>
               </div>
             </li>
@@ -74,12 +74,12 @@
                   <span>{{ album.title }}</span>
                 </div>
                 <div class="flex flex-row gap-4 items-center">
-                  <SimpleButton
+                  <ButtonComponent
                     text="Delete"
                     icon="delete"
                     styling="bg-error text-onError"
                     @click="toggleModal('albums', index)"
-                  ></SimpleButton>
+                  ></ButtonComponent>
                 </div>
               </div>
             </li>
@@ -90,8 +90,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import SimpleButton from '../components/ButtonComponent.vue'
-import Modal from '../components/ModalComponent.vue'
 import { ref } from 'vue'
 import { getUsers } from '../services/UserService'
 import { getPosts } from '../services/PostService'

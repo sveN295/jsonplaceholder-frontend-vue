@@ -4,7 +4,7 @@
     <div class="grid grid-cols-2 lg:grid-cols-6 gap-4 mx-4 lg:mx-0">
       <div v-for="(user, index) in users" v-bind:key="user.id" class="mb-6">
         <router-link :to="{ name: 'user', params: { id: user.id } }" class="">
-          <Card>
+          <CardComponent>
             <template v-slot:image>
               <div
                 class="rounded-xl bg-primaryContainer text-onPrimaryContainer px-8 py-4 mt-4 max-w-8 mx-auto flex justify-center"
@@ -17,7 +17,7 @@
                 <span>{{ user.name }}</span>
               </div></template
             >
-          </Card>
+          </CardComponent>
         </router-link>
       </div>
     </div>
@@ -26,8 +26,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { getUsers } from '../services/UserService'
-
-import Card from '../components/CardComponent.vue'
 
 const users = ref<any[]>([])
 

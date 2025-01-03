@@ -106,9 +106,9 @@ users.value = await getUsers()
 posts.value = await getPosts()
 albums.value = await getAlbums()
 
-function toggleModal(array, index) {
+function toggleModal(arrayName: string, index: number) {
   console.log(index)
-  modalArray.value = array
+  modalArray.value = arrayName
   modalIndex.value = index
   showModal.value = true
 }

@@ -3,11 +3,11 @@ export interface User {
   name: string
   username: string
   email: string
-  address?: Adress[]
+  address?: Adress
   geo?: Geo[]
   phone: string
   website: string
-  company?: Company[]
+  company?: Company
 }
 
 export interface Adress {

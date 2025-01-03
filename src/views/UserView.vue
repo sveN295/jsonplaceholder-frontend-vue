@@ -55,8 +55,8 @@
               <HeadingComponent size="h2" styling="text-onSurface">Address</HeadingComponent>
             </div>
             <div class="pl-4 leading-8">
-              <p>{{ user?.data.address.street }} {{ user?.data.address.suite }}</p>
-              <p>{{ user?.data.address.zipcode }} {{ user?.data.address.city }}</p>
+              <p>{{ address?.street }} {{ address?.suite }}</p>
+              <p>{{ address?.zipcode }} {{ address?.city }}</p>
             </div>
           </div>
           <div class="mb-10">
@@ -85,12 +85,13 @@
               <HeadingComponent size="h2" styling="text-onSurface">Company</HeadingComponent>
             </div>
             <div class="pl-4 leading-8">
-              <p>{{ user?.data.company.name }}</p>
-              <p>{{ user?.data.company.catchPhrase }}.</p>
-              <p>{{ user?.data.company.bs }}</p>
+              <p>{{ company?.name }}</p>
+              <p>{{ company?.catchPhrase }}.</p>
+              <p>{{ company?.bs }}</p>
             </div>
           </div>
         </div>
+        s
       </div>
     </div>
   </div>
@@ -108,6 +109,8 @@ const props = defineProps({
 })
 
 const user = await getUser(props.id)
+const address = user?.data.address
+const company = user?.data.company
 todos.value = await getUserTodos(props.id)
 const posts = await getUserPosts(props.id)
 const albums = await getUserAlbums(props.id)
@@ -123,4 +126,6 @@ function toggleTodo(index: number) {
 function deleteTodo(index: number) {
   todos.value.splice(index, 1)
 }
+
+console.log(user)
 </script>

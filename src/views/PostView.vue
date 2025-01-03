@@ -18,9 +18,8 @@
         <HeadingComponent size="h1" styling="text-onSurface">{{
           post?.data.title
         }}</HeadingComponent>
-        <div v-for="user in users?.data" v-bind:key="user.id">
-          <!--       @to-do Nur den User holen, den ich auch brauche -->
-          <h2 v-if="user.id === post?.data.userId" class="text-primary mt-2">{{ user.name }}</h2>
+        <div class="text-primary mt-2">
+          {{ userNames.get(post?.data.userId) }}
         </div>
         <div class="mt-8 text-onSurface">
           <p class="mb-2">{{ post?.data.body }} {{ post?.data.body }}</p>
@@ -35,24 +34,24 @@
         <div class="bg-surfaceContainerLow rounded-xl p-8 mt-8 text-onSurface">
           <h2 id="comments" class="text-2xl mb-8 flex flex-row gap-4 items-center">
             <span class="material-symbols-outlined icon-large">comment</span>
-            <span>{{ comments?.data.length }} Comments</span>
+            <span>{{ replies.length }} Comments</span>
           </h2>
-          <div v-for="comment in comments?.data" v-bind:key="comment.id">
+          <div v-for="reply in replies" v-bind:key="reply.id">
             <div class="grid grid-cols-8">
               <div class="col-span-7">
                 <div class="flex flex-row gap-4 mb-2 items-center">
                   <span
                     class="rounded-full bg-tertiaryContainer text-onTertiaryContainer px-3 py-1"
-                    >{{ comment.email.slice(0, 1) }}</span
+                    >{{ reply.email.slice(0, 1) }}</span
                   >
                   <div class="d-flex gap-2">
-                    <span class="font-semibold">{{ comment.email }}</span>
+                    <span class="font-semibold">{{ reply.email }}</span>
                   </div>
                 </div>
                 <span>
-                  {{ comment.name }}
+                  {{ reply.name }}
                 </span>
-                <p class="mt-1 mb-4">{{ comment.body }}</p>
+                <p class="mt-1 mb-4">{{ reply.body }}</p>
                 <p class="text-outline mb-8">Antworten</p>
               </div>
               <div class="flex flex-col align-center items-center mt-8">
@@ -86,7 +85,7 @@
               <div
                 class="bg-tertiary text-onTertiary rounded-full text-xs py-1 px-2 text-center absolute -top-3 -right-3"
               >
-                {{ comments?.data.length }}
+                {{ replies.length }}
               </div>
             </div>
           </a>
@@ -98,14 +97,15 @@
 
 <script setup lang="ts">
 import { getPost, getComments } from '../services/PostService'
-import { getUsers } from '../services/UserService'
 import router from '@/router'
+import { getUserNames } from '../services/UserService'
+
+const userNames = await getUserNames()
 
 const props = defineProps({
   id: String
 })
 
 const post = await getPost(props.id)
-const comments = await getComments(props.id)
-const users = await getUsers()
+const replies = await getComments(props.id)
 </script>

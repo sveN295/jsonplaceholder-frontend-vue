@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { type Post } from '../models/post'
+import { type Post, type Comment } from '../models/post'
 
 const ROOT_URL = 'https://jsonplaceholder.typicode.com'
 
@@ -25,7 +25,12 @@ export async function getPost(id: String | undefined) {
   return undefined
 }
 
-export async function updatePost(id: string, title: String, body: String, selected: String) {
+export async function updatePost(
+  id: string,
+  title: string | undefined,
+  body: string | undefined,
+  selected: Number | undefined
+) {
   const res = await axios({
     method: 'patch',
     url: `${ROOT_URL}/posts/${id}`,
@@ -62,11 +67,16 @@ export async function getUserPosts(userId: String | undefined) {
 }
 
 export async function getComments(id: String | undefined) {
+  const comments = []
+
   if (id) {
     const url = `${ROOT_URL}/posts/${id}/comments`
+    const res = await axios.get<Comment[]>(url)
 
-    return await axios.get<Comment[]>(url)
+    for (const [key, comment] of Object.entries(res.data)) {
+      comments.push(comment)
+    }
   }
 
-  return undefined
+  return comments
 }
